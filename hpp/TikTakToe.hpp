@@ -11,15 +11,6 @@ struct CurrentInputLocation {
 	bool isPlayerXInput;
 };
 
-class Checkers {
-
-public:
-
-
-private:
-
-
-};
 
 class TikTakToe {
 
@@ -46,6 +37,6 @@ private:
 
 	CurrentInputLocation vInput;
 	MeshData& data;
-	bool isGameOver;
+	bool vIsGameOver;
 	int noOfTurns;
 };

@@ -12,8 +12,5 @@ public:
 
 /*
 * 
-* researched way to print different colors in console.
-    cout << "\x1B[48;5;45m#\033[0msdfasdf";
-    cout << "\x1B[48;5;214m#\033[0msdfasdf";
-    cout << "\x1B[48;5;231m#\033[0msdfasdf";
+* Using fmt to print different colors in console
 */

@@ -9,7 +9,7 @@
 TikTakToe::TikTakToe(int depth, int length) :
 	data(*(new MeshData(length, depth))),
 	vInput{ 0,0,false },
-	isGameOver(false),
+	vIsGameOver(false),
 	noOfTurns(0)
 {
 
@@ -25,7 +25,7 @@ TikTakToe::~TikTakToe()
 void TikTakToe::startGame()
 {
 	using std::cout;
-	while (noOfTurns != data.getLength() * data.getDepth() && !isGameOver) {
+	while (noOfTurns != data.getLength() * data.getDepth() && !vIsGameOver) {
 #if		_WIN32
 		system("cls");
 #elif	__APPLE__ || __linux__
@@ -42,7 +42,7 @@ void TikTakToe::startGame()
 	system("cls");
 	MeshPrinter::printMesh(data);
 
-	if (isGameOver) {
+	if (vIsGameOver) {
 		cout << "The game is won by player with symbol : ";
 		if (!vInput.isPlayerXInput) {
 			cout << "(X)";
@@ -286,13 +286,13 @@ void TikTakToe::internalGameRuleChecker()
 	// checking horizontals
 	for (int i = 0; i < data.getDepth(); i++)
 	{
-		isGameOver = TikTakToe::isNonDiagonalWinnerSequenceMarkIfTrue(i, true) || isGameOver;
+		vIsGameOver = TikTakToe::isNonDiagonalWinnerSequenceMarkIfTrue(i, true) || vIsGameOver;
 	}
 
 	// checking verticals 
 	for (int i = 0; i < data.getLength(); i++)
 	{
-		isGameOver = TikTakToe::isNonDiagonalWinnerSequenceMarkIfTrue(i, false) || isGameOver;
+		vIsGameOver = TikTakToe::isNonDiagonalWinnerSequenceMarkIfTrue(i, false) || vIsGameOver;
 	}
 
 	// checking diagonals 
@@ -300,16 +300,16 @@ void TikTakToe::internalGameRuleChecker()
 		for (int i = 0; i < data.getLength(); i++)
 		{
 			bool isX = TikTakToe::isGameBlockX(data.getDataAt(i, 0));
-			isGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(true, false, i, 0, isX) || isGameOver;
-			isGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(true, true, i, 0, isX) || isGameOver;
+			vIsGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(true, false, i, 0, isX) || vIsGameOver;
+			vIsGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(true, true, i, 0, isX) || vIsGameOver;
 		}
 	}
 	else {
 		for (int i = 0; i < data.getDepth(); i++)
 		{
 			bool isX = TikTakToe::isGameBlockX(data.getDataAt(0, i));
-			isGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(false, false, 0, i, isX) || isGameOver;
-			isGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(false, true, 0, i, isX) || isGameOver;
+			vIsGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(false, false, 0, i, isX) || vIsGameOver;
+			vIsGameOver = TikTakToe::isDiagonalWinningSequenceMarkIfTrue(false, true, 0, i, isX) || vIsGameOver;
 		}
 	}
 }

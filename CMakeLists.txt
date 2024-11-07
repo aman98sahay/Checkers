@@ -20,6 +20,7 @@ add_executable(checkers
 	"src/MeshData.cpp" 
 	"src/MeshPrinter.cpp"
 	# "src/TikTakToe.cpp"
+	"src/Cheker.cpp"
  	"hpp/MeshData.hpp"
  	"hpp/MeshPrinter.hpp"
  	"hpp/TikTakToe.hpp"
